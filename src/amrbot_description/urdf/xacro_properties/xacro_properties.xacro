@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="package_name" value="amrbot_description"/>
+    <xacro:property name="robot_name" value="amr_bot"/>
+
+</robot>

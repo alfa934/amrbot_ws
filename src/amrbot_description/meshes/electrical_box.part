@@ -1,0 +1,13 @@
+{
+    "configuration": "default",
+    "documentId": "4209ac7f0152411e9d4dcbf0",
+    "documentMicroversion": "b3a5325305e20e9d1e00a22e",
+    "elementId": "31a725b08f6db2ce1e6e9e21",
+    "fullConfiguration": "default",
+    "id": "MVrWKmyaEMY5hMXF/",
+    "isStandardContent": false,
+    "name": "electrical_box <1>",
+    "partId": "JHD",
+    "suppressed": false,
+    "type": "Part"
+}

@@ -1,0 +1,38 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Link imu -->
+  <link name="imu_link">
+    <inertial>
+      <origin xyz="0 0 -0.005" rpy="0 0 0"/>
+      <mass value="0.0028125"/>
+      <inertia ixx="7.6172e-08" ixy="0" ixz="0" iyy="7.6172e-08" iyz="0" izz="1.05469e-07"/>
+    </inertial>
+    <!-- Part imu -->
+    <visual>
+      <origin xyz="-0 0 -0.01" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://amrbot_description/meshes/imu.stl"/>
+      </geometry>
+      <material name="imu_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0 0 -0.01" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://amrbot_description/meshes/imu.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint from base_link to imu -->
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0.00275956 0.00314761 0.0133316" rpy="3.14159 -0 0"/>
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+
+</robot>

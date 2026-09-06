@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Link electrical_box -->
+  <link name="electrical_box_link">
+    <inertial>
+      <origin xyz="-0 -0 0.0218899" rpy="0 0 0"/>
+      <mass value="0.619434"/>
+      <inertia ixx="0.00397832" ixy="0" ixz="0" iyy="0.00227098" iyz="0" izz="0.00553297"/>
+    </inertial>
+    <!-- Part electrical_box -->
+    <visual>
+      <origin xyz="0 -0 0.069" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://amrbot_description/meshes/electrical_box.stl"/>
+      </geometry>
+      <material name="electrical_box_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 -0 0.069" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://amrbot_description/meshes/electrical_box.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Link lidar -->
+  <link name="lidar_link">
+    <inertial>
+      <origin xyz="-8.43015e-07 4.26207e-06 -0.0179994" rpy="0 0 0"/>
+      <mass value="0.105276"/>
+      <inertia ixx="3.59683e-05" ixy="-2.1e-10" ixz="-3.82e-10" iyy="3.59741e-05" iyz="1.0203e-08" izz="4.43003e-05"/>
+    </inertial>
+    <!-- Part lidar -->
+    <visual>
+      <origin xyz="0.000613921 -0.000614591 0" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://amrbot_description/meshes/lidar.stl"/>
+      </geometry>
+      <material name="lidar_material">
+        <color rgba="0.0980392 0.0980392 0.0980392 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.000613921 -0.000614591 0" rpy="3.14159 -0 0"/>
+      <geometry>
+        <mesh filename="package://amrbot_description/meshes/lidar.stl"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- Joint from electrical_box to lidar -->
+  <joint name="lidar_joint" type="fixed">
+    <origin xyz="-0 -0 -0.006" rpy="0 -0 -1.5708"/>
+    <parent link="electrical_box_link"/>
+    <child link="lidar_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  
+  <!-- Joint from base_link to electrical_box -->
+  <joint name="electrical_box_joint" type="fixed">
+    <origin xyz="0.00275956 0.00314761 0.0833316" rpy="3.14159 -0 0"/>
+    <parent link="base_link"/>
+    <child link="electrical_box_link"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+
+</robot>

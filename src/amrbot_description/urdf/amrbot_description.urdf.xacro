@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<robot name="mini_agv" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:arg name="sim" default="false"/>
+
+  <xacro:include filename="xacro_properties/xacro_properties.xacro"/>
+  <xacro:include filename="modules/base.xacro"/>
+  <xacro:include filename="modules/imu.xacro"/>
+  <xacro:include filename="modules/lidar.xacro"/>
+
+  <xacro:include filename="ros2_control/amrbot.ros2_control.xacro"/>
+
+<xacro:if value="$(arg sim)">
+  <xacro:include filename="$(find amrbot_gazebo)/urdf/gazebo_plugins.xacro"/>
+  <xacro:include filename="$(find amrbot_gazebo)/urdf/gazebo_properties.xacro"/>
+</xacro:if>
+
+</robot>
