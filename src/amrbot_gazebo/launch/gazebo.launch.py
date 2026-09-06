@@ -88,7 +88,7 @@ def generate_launch_description():
         launch_arguments={
             'topic': '/robot_description',
             'entity_name': 'amrbot',
-            'z': '1.0',
+            # 'z': '1.0',
         }.items(),
     )
 

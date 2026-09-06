@@ -8,7 +8,7 @@
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint"/>
         <child link="base_link"/>
-        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0.0 0.0 ${base_height}" rpy="0.0 0.0 0.0"/>
     </joint>   
 
 <!-- From ONSHAPE -->
@@ -23,7 +23,7 @@
     <visual>
       <origin xyz="0.00275956 0.00314761 -0.00866843" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/base_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/base_frame.stl"/>
       </geometry>
       <material name="base_frame_material">
         <color rgba="0.768627 0.886275 0.952941 1"/>
@@ -32,14 +32,14 @@
     <collision>
       <origin xyz="0.00275956 0.00314761 -0.00866843" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/base_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/base_frame.stl"/>
       </geometry>
     </collision>
     <!-- Part pvc -->
     <visual>
       <origin xyz="0.00275956 0.00314761 -0.00866843" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pvc.stl"/>
+        <mesh filename="package://${package_name}/meshes/pvc.stl"/>
       </geometry>
       <material name="pvc_material">
         <color rgba="0.972549 0.529412 0.00392157 1"/>
@@ -48,7 +48,7 @@
     <collision>
       <origin xyz="0.00275956 0.00314761 -0.00866843" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pvc.stl"/>
+        <mesh filename="package://${package_name}/meshes/pvc.stl"/>
       </geometry>
     </collision>
   </link>
@@ -63,7 +63,7 @@
     <visual>
       <origin xyz="0 -0.007 -0.023" rpy="1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pg36_body.stl"/>
+        <mesh filename="package://${package_name}/meshes/pg36_body.stl"/>
       </geometry>
       <material name="pg36_body_material">
         <color rgba="0.74902 0.74902 0.74902 1"/>
@@ -72,14 +72,14 @@
     <collision>
       <origin xyz="0 -0.007 -0.023" rpy="1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pg36_body.stl"/>
+        <mesh filename="package://${package_name}/meshes/pg36_body.stl"/>
       </geometry>
     </collision>
     <!-- Part bracket_body -->
     <visual>
       <origin xyz="0 -0.0072 -0.023" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/bracket_body.stl"/>
+        <mesh filename="package://${package_name}/meshes/bracket_body.stl"/>
       </geometry>
       <material name="bracket_body_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -88,14 +88,14 @@
     <collision>
       <origin xyz="0 -0.0072 -0.023" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/bracket_body.stl"/>
+        <mesh filename="package://${package_name}/meshes/bracket_body.stl"/>
       </geometry>
     </collision>
     <!-- Part bracket_shaft -->
     <visual>
       <origin xyz="0 -0.01 -0.023" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/bracket_shaft.stl"/>
+        <mesh filename="package://${package_name}/meshes/bracket_shaft.stl"/>
       </geometry>
       <material name="bracket_shaft_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -104,14 +104,14 @@
     <collision>
       <origin xyz="0 -0.01 -0.023" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/bracket_shaft.stl"/>
+        <mesh filename="package://${package_name}/meshes/bracket_shaft.stl"/>
       </geometry>
     </collision>
     <!-- Part pg36_shaft -->
     <visual>
       <origin xyz="0 -0.007 -0.023" rpy="1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pg36_shaft.stl"/>
+        <mesh filename="package://${package_name}/meshes/pg36_shaft.stl"/>
       </geometry>
       <material name="pg36_shaft_material">
         <color rgba="0.74902 0.74902 0.74902 1"/>
@@ -120,7 +120,7 @@
     <collision>
       <origin xyz="0 -0.007 -0.023" rpy="1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pg36_shaft.stl"/>
+        <mesh filename="package://${package_name}/meshes/pg36_shaft.stl"/>
       </geometry>
     </collision>
   </link>
@@ -135,7 +135,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/wheel.stl"/>
       </geometry>
       <material name="wheel_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -144,14 +144,14 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/wheel.stl"/>
       </geometry>
     </collision>
     <!-- Part tyre -->
     <visual>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/tyre.stl"/>
+        <mesh filename="package://${package_name}/meshes/tyre.stl"/>
       </geometry>
       <material name="tyre_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>
@@ -160,14 +160,14 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/tyre.stl"/>
+        <mesh filename="package://${package_name}/meshes/tyre.stl"/>
       </geometry>
     </collision>
     <!-- Part 8mm_flange_hub -->
     <visual>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/8mm_flange_hub.stl"/>
+        <mesh filename="package://${package_name}/meshes/8mm_flange_hub.stl"/>
       </geometry>
       <material name="8mm_flange_hub_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -176,7 +176,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/8mm_flange_hub.stl"/>
+        <mesh filename="package://${package_name}/meshes/8mm_flange_hub.stl"/>
       </geometry>
     </collision>
   </link>
@@ -207,7 +207,7 @@
     <visual>
       <origin xyz="0 -0.007 -0.023" rpy="1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pg36_body.stl"/>
+        <mesh filename="package://${package_name}/meshes/pg36_body.stl"/>
       </geometry>
       <material name="pg36_body_2_material">
         <color rgba="0.74902 0.74902 0.74902 1"/>
@@ -216,14 +216,14 @@
     <collision>
       <origin xyz="0 -0.007 -0.023" rpy="1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pg36_body.stl"/>
+        <mesh filename="package://${package_name}/meshes/pg36_body.stl"/>
       </geometry>
     </collision>
     <!-- Part bracket_body_2 -->
     <visual>
       <origin xyz="0 -0.0072 -0.023" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/bracket_body.stl"/>
+        <mesh filename="package://${package_name}/meshes/bracket_body.stl"/>
       </geometry>
       <material name="bracket_body_2_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -232,14 +232,14 @@
     <collision>
       <origin xyz="0 -0.0072 -0.023" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/bracket_body.stl"/>
+        <mesh filename="package://${package_name}/meshes/bracket_body.stl"/>
       </geometry>
     </collision>
     <!-- Part bracket_shaft_2 -->
     <visual>
       <origin xyz="0 -0.01 -0.023" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/bracket_shaft.stl"/>
+        <mesh filename="package://${package_name}/meshes/bracket_shaft.stl"/>
       </geometry>
       <material name="bracket_shaft_2_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -248,14 +248,14 @@
     <collision>
       <origin xyz="0 -0.01 -0.023" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/bracket_shaft.stl"/>
+        <mesh filename="package://${package_name}/meshes/bracket_shaft.stl"/>
       </geometry>
     </collision>
     <!-- Part pg36_shaft_2 -->
     <visual>
       <origin xyz="0 -0.007 -0.023" rpy="1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pg36_shaft.stl"/>
+        <mesh filename="package://${package_name}/meshes/pg36_shaft.stl"/>
       </geometry>
       <material name="pg36_shaft_2_material">
         <color rgba="0.74902 0.74902 0.74902 1"/>
@@ -264,7 +264,7 @@
     <collision>
       <origin xyz="0 -0.007 -0.023" rpy="1.5708 -1.5708 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/pg36_shaft.stl"/>
+        <mesh filename="package://${package_name}/meshes/pg36_shaft.stl"/>
       </geometry>
     </collision>
   </link>
@@ -279,7 +279,7 @@
     <visual>
       <origin xyz="0 0 0.003" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/wheel.stl"/>
       </geometry>
       <material name="wheel_2_material">
         <color rgba="0.647059 0.647059 0.647059 1"/>
@@ -288,14 +288,14 @@
     <collision>
       <origin xyz="0 0 0.003" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/wheel.stl"/>
       </geometry>
     </collision>
     <!-- Part tyre_2 -->
     <visual>
       <origin xyz="0 0 0.003" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/tyre.stl"/>
+        <mesh filename="package://${package_name}/meshes/tyre.stl"/>
       </geometry>
       <material name="tyre_2_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>
@@ -304,14 +304,14 @@
     <collision>
       <origin xyz="0 0 0.003" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/tyre.stl"/>
+        <mesh filename="package://${package_name}/meshes/tyre.stl"/>
       </geometry>
     </collision>
     <!-- Part 8mm_flange_hub_2 -->
     <visual>
       <origin xyz="0 0 0.003" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/8mm_flange_hub.stl"/>
+        <mesh filename="package://${package_name}/meshes/8mm_flange_hub.stl"/>
       </geometry>
       <material name="8mm_flange_hub_2_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -320,7 +320,7 @@
     <collision>
       <origin xyz="0 0 0.003" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/8mm_flange_hub.stl"/>
+        <mesh filename="package://${package_name}/meshes/8mm_flange_hub.stl"/>
       </geometry>
     </collision>
   </link>
@@ -351,7 +351,7 @@
     <visual>
       <origin xyz="0 0.0135 -0.04825" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_frame.stl"/>
       </geometry>
       <material name="caster_frame_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>
@@ -360,7 +360,7 @@
     <collision>
       <origin xyz="0 0.0135 -0.04825" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_frame.stl"/>
       </geometry>
     </collision>
   </link>
@@ -375,7 +375,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_wheel.stl"/>
       </geometry>
       <material name="caster_wheel_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -384,7 +384,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_wheel.stl"/>
       </geometry>
     </collision>
   </link>
@@ -415,7 +415,7 @@
     <visual>
       <origin xyz="0 0.0135 -0.04825" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_frame.stl"/>
       </geometry>
       <material name="caster_frame_2_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>
@@ -424,7 +424,7 @@
     <collision>
       <origin xyz="0 0.0135 -0.04825" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_frame.stl"/>
       </geometry>
     </collision>
   </link>
@@ -439,7 +439,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_wheel.stl"/>
       </geometry>
       <material name="caster_wheel_2_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -448,7 +448,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_wheel.stl"/>
       </geometry>
     </collision>
   </link>
@@ -479,7 +479,7 @@
     <visual>
       <origin xyz="0 0.0135 -0.04825" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_frame.stl"/>
       </geometry>
       <material name="caster_frame_3_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>
@@ -488,7 +488,7 @@
     <collision>
       <origin xyz="0 0.0135 -0.04825" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_frame.stl"/>
       </geometry>
     </collision>
   </link>
@@ -503,7 +503,7 @@
     <visual>
       <origin xyz="0 0 -0.027" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_wheel.stl"/>
       </geometry>
       <material name="caster_wheel_3_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -512,7 +512,7 @@
     <collision>
       <origin xyz="0 0 -0.027" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_wheel.stl"/>
       </geometry>
     </collision>
   </link>
@@ -543,7 +543,7 @@
     <visual>
       <origin xyz="0 0.0135 -0.04825" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_frame.stl"/>
       </geometry>
       <material name="caster_frame_4_material">
         <color rgba="0.231373 0.380392 0.705882 1"/>
@@ -552,7 +552,7 @@
     <collision>
       <origin xyz="0 0.0135 -0.04825" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_frame.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_frame.stl"/>
       </geometry>
     </collision>
   </link>
@@ -567,7 +567,7 @@
     <visual>
       <origin xyz="0 0 -0.027" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_wheel.stl"/>
       </geometry>
       <material name="caster_wheel_4_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -576,7 +576,7 @@
     <collision>
       <origin xyz="0 0 -0.027" rpy="-1.5708 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/caster_wheel.stl"/>
+        <mesh filename="package://${package_name}/meshes/caster_wheel.stl"/>
       </geometry>
     </collision>
   </link>

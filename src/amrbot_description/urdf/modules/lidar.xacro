@@ -12,7 +12,7 @@
     <visual>
       <origin xyz="0 -0 0.069" rpy="3.14159 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/electrical_box.stl"/>
+        <mesh filename="package://${package_name}/meshes/electrical_box.stl"/>
       </geometry>
       <material name="electrical_box_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -21,7 +21,7 @@
     <collision>
       <origin xyz="0 -0 0.069" rpy="3.14159 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/electrical_box.stl"/>
+        <mesh filename="package://${package_name}/meshes/electrical_box.stl"/>
       </geometry>
     </collision>
   </link>
@@ -37,7 +37,7 @@
     <visual>
       <origin xyz="0.000613921 -0.000614591 0" rpy="3.14159 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/lidar.stl"/>
+        <mesh filename="package://${package_name}/meshes/lidar.stl"/>
       </geometry>
       <material name="lidar_material">
         <color rgba="0.0980392 0.0980392 0.0980392 1"/>
@@ -46,7 +46,7 @@
     <collision>
       <origin xyz="0.000613921 -0.000614591 0" rpy="3.14159 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/lidar.stl"/>
+        <mesh filename="package://${package_name}/meshes/lidar.stl"/>
       </geometry>
     </collision>
   </link>

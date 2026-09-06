@@ -12,7 +12,7 @@
     <visual>
       <origin xyz="-0 0 -0.01" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/imu.stl"/>
+        <mesh filename="package://${package_name}/meshes/imu.stl"/>
       </geometry>
       <material name="imu_material">
         <color rgba="0.615686 0.811765 0.929412 1"/>
@@ -21,7 +21,7 @@
     <collision>
       <origin xyz="-0 0 -0.01" rpy="0 -0 0"/>
       <geometry>
-        <mesh filename="package://amrbot_description/meshes/imu.stl"/>
+        <mesh filename="package://${package_name}/meshes/imu.stl"/>
       </geometry>
     </collision>
   </link>
