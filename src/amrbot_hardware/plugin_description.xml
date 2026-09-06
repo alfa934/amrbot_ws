@@ -1,0 +1,10 @@
+<library path="amrbot_hardware_interface">
+  <class
+    name="amrbot_hardware/MiniAgvHardwareInterface"
+    type="amrbot_hardware::MiniAgvHardwareInterface"
+    base_class_type="hardware_interface::SystemInterface">
+    <description>
+      Mini AGV serial hardware interface for diff_drive_controller
+    </description>
+  </class>
+</library>
