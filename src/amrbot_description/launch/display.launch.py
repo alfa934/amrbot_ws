@@ -7,10 +7,10 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    pkg_share_dir = get_package_share_directory('amrbot_description')
+    amrbot_description_pkg = get_package_share_directory('amrbot_description')
     
-    default_model_path = os.path.join(pkg_share_dir, 'urdf', 'amrbot_description.urdf.xacro')
-    default_rviz_path = os.path.join(pkg_share_dir, 'rviz', 'config.rviz')
+    default_model_path = os.path.join(amrbot_description_pkg, 'urdf', 'amrbot_description.urdf.xacro')
+    default_rviz_path = os.path.join(amrbot_description_pkg, 'rviz', 'config.rviz')
 
 
     declare_model = DeclareLaunchArgument(
