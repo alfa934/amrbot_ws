@@ -329,7 +329,7 @@
     <origin xyz="0 -0.0283 -0.023" rpy="1.5708 -1.5708 0"/>
     <parent link="motor_assy_2_link"/>
     <child link="wheel_assy_2_link"/>
-    <axis xyz="0 0 1"/>
+    <axis xyz="0 0 -1"/>
     <limit effort="10" velocity="10"/>
   </joint>
   <!-- Joint from base_link to motor_assy_2 -->

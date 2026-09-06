@@ -1,0 +1,23 @@
+ekf_filter_node:
+  ros__parameters:
+    publish_tf: true
+
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_footprint
+    world_frame: odom
+
+    frequency: 30.0
+
+    odom0: /odom
+    odom0_config: [true, true, false,   # x, y (z=0 for 2D)
+                  false, false, true,   # roll, pitch, yaw
+                  true, true, false,    # linear velocities (x,y)
+                  false, false, true]   # angular velocities (z=yaw rate)
+
+    odom0_differential: false
+    odom0_relative: false
+
+    two_d_mode: true   
+    print_diagnostics: false
+    publish_acceleration: false
