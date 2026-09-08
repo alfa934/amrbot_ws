@@ -52,7 +52,7 @@ def generate_launch_description():
         executable='rviz2',
         condition=IfCondition(LaunchConfiguration('rviz')),
         arguments=['-d', PathJoinSubstitution([
-            FindPackageShare('mini_agv_navigation').find('mini_agv_navigation'),
+            FindPackageShare('amrbot_navigation').find('amrbot_navigation'),
             'rviz',
             'mapping.rviz'
         ])]

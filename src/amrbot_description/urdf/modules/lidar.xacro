@@ -53,7 +53,7 @@
 
   <!-- Joint from electrical_box to lidar -->
   <joint name="lidar_joint" type="fixed">
-    <origin xyz="-0 -0 -0.006" rpy="0 -0 -1.5708"/>
+    <origin xyz="-0 -0 -0.006" rpy="0 -0 3.14159"/>
     <parent link="electrical_box_link"/>
     <child link="lidar_link"/>
     <axis xyz="0 0 1"/>

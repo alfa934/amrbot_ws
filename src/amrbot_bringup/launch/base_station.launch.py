@@ -28,6 +28,6 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        include_teleop_joy,
+        # include_teleop_joy,
         gui_node,
     ])
