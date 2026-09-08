@@ -87,6 +87,8 @@ private:
 
     serialib m_serial_;
 
+    bool first_read_ = true;
+
     ParserState parse_state_ = WAITING_A;
     int payload_bytes_read_ = 0;
     char rx_buffer_[sizeof(RxPayload)] = {};

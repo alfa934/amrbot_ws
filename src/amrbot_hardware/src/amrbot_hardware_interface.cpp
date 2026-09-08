@@ -60,8 +60,8 @@ hardware_interface::CallbackReturn AmrbotHardwareInterface::on_init(
     auto node = this->get_node();
     imu_pub_ = node->create_publisher<sensor_msgs::msg::Imu>("/imu", 10);
 
-RCLCPP_INFO(rclcpp::get_logger("AmrbotHardwareInterface"),
-            "IMU publisher created on topic /imu");
+    RCLCPP_INFO(rclcpp::get_logger("AmrbotHardwareInterface"),
+                "IMU publisher created on topic /imu");
 
     RCLCPP_INFO(rclcpp::get_logger("AmrbotHardwareInterface"),
                 "Initialized with left wheel '%s' and right wheel '%s'",
@@ -124,6 +124,9 @@ hardware_interface::CallbackReturn AmrbotHardwareInterface::on_activate(
     memset(&rx_data_, 0, sizeof(rx_data_));
     last_serial_rx_ = rclcpp::Clock().now().seconds();
 
+    // --- CHANGE FOR OPTION B: Reset first_read_ flag on activation ---
+    first_read_ = true;
+
     return hardware_interface::CallbackReturn::SUCCESS;
 }
 
@@ -150,6 +153,24 @@ hardware_interface::return_type AmrbotHardwareInterface::read(
         parse_state_ = WAITING_A;
         payload_bytes_read_ = 0;
         memset(&rx_data_, 0, sizeof(rx_data_));
+        last_serial_rx_ = rclcpp::Clock().now().seconds();
+        // --- CHANGE FOR OPTION B: Also reset first_read_ after reconnect ---
+        first_read_ = true;
+        return hardware_interface::return_type::OK;
+    }
+
+    // --- CHANGE FOR OPTION B: Discard all buffered data on first read after activation ---
+    if (first_read_)
+    {
+        while (m_serial_.available() > 0)
+        {
+            char dummy;
+            if (m_serial_.readBytes(&dummy, 1, 1, 1) != 1)
+            {
+                break;
+            }
+        }
+        first_read_ = false;
         last_serial_rx_ = rclcpp::Clock().now().seconds();
         return hardware_interface::return_type::OK;
     }
