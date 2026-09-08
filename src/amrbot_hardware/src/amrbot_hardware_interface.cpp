@@ -60,6 +60,10 @@ hardware_interface::CallbackReturn AmrbotHardwareInterface::on_init(
     auto node = this->get_node();
     imu_pub_ = node->create_publisher<sensor_msgs::msg::Imu>("/imu", 10);
 
+    imu_timer_ = node->create_wall_timer(
+        std::chrono::milliseconds(20),
+        std::bind(&AmrbotHardwareInterface::publishImu, this));
+
     RCLCPP_INFO(rclcpp::get_logger("AmrbotHardwareInterface"),
                 "IMU publisher created on topic /imu");
 
@@ -124,7 +128,6 @@ hardware_interface::CallbackReturn AmrbotHardwareInterface::on_activate(
     memset(&rx_data_, 0, sizeof(rx_data_));
     last_serial_rx_ = rclcpp::Clock().now().seconds();
 
-    // --- CHANGE FOR OPTION B: Reset first_read_ flag on activation ---
     first_read_ = true;
 
     return hardware_interface::CallbackReturn::SUCCESS;
@@ -154,12 +157,10 @@ hardware_interface::return_type AmrbotHardwareInterface::read(
         payload_bytes_read_ = 0;
         memset(&rx_data_, 0, sizeof(rx_data_));
         last_serial_rx_ = rclcpp::Clock().now().seconds();
-        // --- CHANGE FOR OPTION B: Also reset first_read_ after reconnect ---
         first_read_ = true;
         return hardware_interface::return_type::OK;
     }
 
-    // --- CHANGE FOR OPTION B: Discard all buffered data on first read after activation ---
     if (first_read_)
     {
         while (m_serial_.available() > 0)
@@ -205,8 +206,6 @@ hardware_interface::return_type AmrbotHardwareInterface::read(
 
                 left_delta_ += left_delta_rad;
                 right_delta_ += right_delta_rad;
-                
-
 
                 double raw_yaw = -rx_data_.yaw_deg;
                 if (!yaw_offset_initialized_)
@@ -250,20 +249,6 @@ hardware_interface::return_type AmrbotHardwareInterface::read(
         hw_velocity_states_[1] = 0.0;
     }
 
-
-
-    sensor_msgs::msg::Imu imu_msg;
-    imu_msg.header.stamp = this->get_node()->now();
-    imu_msg.header.frame_id = "imu_link";
-
-    double yaw_rad = hw_yaw_ * M_PI / 180.0;
-    imu_msg.orientation.x = 0.0;
-    imu_msg.orientation.y = 0.0;
-    imu_msg.orientation.z = sin(yaw_rad / 2.0);
-    imu_msg.orientation.w = cos(yaw_rad / 2.0);
-
-    imu_pub_->publish(imu_msg);
-
     return hardware_interface::return_type::OK;
 }
 
@@ -288,8 +273,6 @@ hardware_interface::return_type AmrbotHardwareInterface::write(
 
     return hardware_interface::return_type::OK;
 }
-
-
 
 bool AmrbotHardwareInterface::openSerial(const char * port, int baudrate)
 {
@@ -385,6 +368,40 @@ void AmrbotHardwareInterface::sendTxFrame()
             }
         }
     }
+}
+
+void AmrbotHardwareInterface::publishImu()
+{
+    sensor_msgs::msg::Imu imu_msg;
+    imu_msg.header.stamp = this->get_node()->now();
+    imu_msg.header.frame_id = "imu_link";
+
+    double yaw_rad = hw_yaw_ * M_PI / 180.0;
+    imu_msg.orientation.x = 0.0;
+    imu_msg.orientation.y = 0.0;
+    imu_msg.orientation.z = sin(yaw_rad / 2.0);
+    imu_msg.orientation.w = cos(yaw_rad / 2.0);
+
+    imu_msg.orientation_covariance[0] = 1e6;
+    imu_msg.orientation_covariance[1] = 0.0;
+    imu_msg.orientation_covariance[2] = 0.0;
+
+    imu_msg.orientation_covariance[3] = 0.0;
+    imu_msg.orientation_covariance[4] = 1e6;
+    imu_msg.orientation_covariance[5] = 0.0;
+
+    imu_msg.orientation_covariance[6] = 0.0;
+    imu_msg.orientation_covariance[7] = 0.0;
+    imu_msg.orientation_covariance[8] = 0.01;  
+
+    imu_msg.angular_velocity_covariance[0] = 1e6;
+    imu_msg.angular_velocity_covariance[4] = 1e6;
+    imu_msg.angular_velocity_covariance[8] = 1e6;
+    imu_msg.linear_acceleration_covariance[0] = 1e6;
+    imu_msg.linear_acceleration_covariance[4] = 1e6;
+    imu_msg.linear_acceleration_covariance[8] = 1e6;
+
+    imu_pub_->publish(imu_msg);
 }
 
 }  // namespace amrbot_hardware

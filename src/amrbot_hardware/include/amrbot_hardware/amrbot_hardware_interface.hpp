@@ -111,17 +111,18 @@ private:
     double left_delta_ = 0.0;
     double right_delta_ = 0.0;
 
-    double counts_to_rad_ = 0.0013;      // encoder counts -> wheel radians
+    double counts_to_rad_ = 0.00248;      // encoder counts -> wheel radians
     double rad_s_to_motor_ = 6.0;     // wheel rad/s -> motor speed units
 
-    // Sensor state storage (from RxPayload)
     double hw_yaw_ = 0.0;
     double hw_gpio_ = 0.0;
     double hw_driver_ready_ = 0.0;
-    // Yaw offset calibration
+
     bool yaw_offset_initialized_ = false;
     double yaw_offset_ = 0.0;
     rclcpp::Publisher<sensor_msgs::msg::Imu>::SharedPtr imu_pub_;
+    rclcpp::TimerBase::SharedPtr imu_timer_;
+    void publishImu();
 
 };
 

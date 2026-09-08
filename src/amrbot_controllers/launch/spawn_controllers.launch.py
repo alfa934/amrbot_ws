@@ -45,7 +45,7 @@ def generate_launch_description():
     joint_state_publisher_node = Node(
         package='joint_state_publisher',
         executable='joint_state_publisher',
-        parameters=[{'use_gui': False, 'source_list': ['/joint_states']}],
+        parameters=[{'use_gui': False, 'source_list': ['/joint_states'], 'rate': 1.0}],
         output='screen'
     )
 

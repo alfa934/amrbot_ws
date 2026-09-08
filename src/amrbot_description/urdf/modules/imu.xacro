@@ -28,7 +28,7 @@
 
   <!-- Joint from base_link to imu -->
   <joint name="imu_joint" type="fixed">
-    <origin xyz="0.00275956 0.00314761 0.0133316" rpy="0 0 3.14159"/>
+    <origin xyz="0.00275956 0.00314761 0.0133316" rpy="0 0 0"/>
     <parent link="base_link"/>
     <child link="imu_link"/>
     <axis xyz="0 0 1"/>
