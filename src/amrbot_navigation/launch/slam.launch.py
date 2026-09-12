@@ -1,5 +1,5 @@
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, ExecuteProcess, TimerAction
+from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch_ros.actions import Node
@@ -14,7 +14,7 @@ def generate_launch_description():
     use_sim_time_arg = DeclareLaunchArgument(
         'use_sim_time',
         default_value='false',
-        description='Use simulation time'
+        description='Use simulation time (must be consistent across all nodes)'
     )
 
     rviz_arg = DeclareLaunchArgument(
@@ -34,25 +34,23 @@ def generate_launch_description():
         output='screen'
     )
 
-    configure_cmd = ExecuteProcess(
-        cmd=['ros2', 'lifecycle', 'set', '/slam_toolbox', 'configure'],
+    lifecycle_setup = ExecuteProcess(
+        cmd=[
+            'bash', '-c',
+            'while ! ros2 node list | grep -q /slam_toolbox; do sleep 0.5; done && '
+            'sleep 0.5 && '
+            'ros2 lifecycle set /slam_toolbox configure && '
+            'ros2 lifecycle set /slam_toolbox activate'
+        ],
         output='screen'
     )
-
-    activate_cmd = ExecuteProcess(
-        cmd=['ros2', 'lifecycle', 'set', '/slam_toolbox', 'activate'],
-        output='screen'
-    )
-
-    delayed_configure = TimerAction(period=2.0, actions=[configure_cmd])
-    delayed_activate = TimerAction(period=3.0, actions=[activate_cmd])
 
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
         condition=IfCondition(LaunchConfiguration('rviz')),
         arguments=['-d', PathJoinSubstitution([
-            FindPackageShare('amrbot_navigation').find('amrbot_navigation'),
+            navigation_pkg,
             'rviz',
             'mapping.rviz'
         ])]
@@ -62,7 +60,6 @@ def generate_launch_description():
         use_sim_time_arg,
         rviz_arg,
         slam_toolbox_node,
-        delayed_configure,
-        delayed_activate,
+        lifecycle_setup,
         rviz_node,
     ])

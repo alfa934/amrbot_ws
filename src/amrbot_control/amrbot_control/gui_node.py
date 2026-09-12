@@ -103,7 +103,6 @@ class GuiNode(Node):
                              f"dist={closest['dist']:.1f}px, area={closest['area']:.0f}px²")
             if tags:
                 for tag in tags:
-                    # skip closest if we already printed it
                     if closest and tag['id'] == closest['id']:
                         continue
                     lines.append(f"ID {tag['id']}: dx={tag['dx']:+.1f}px, dy={tag['dy']:+.1f}px, "
@@ -123,7 +122,7 @@ class GuiNode(Node):
 class GuiApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("Mini AGV Control")
+        self.root.title("AMRBOT Control")
         self.root.geometry("900x700")
 
         rclpy.init(args=None)

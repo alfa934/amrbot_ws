@@ -18,7 +18,7 @@ def generate_launch_description():
     map_file = PathJoinSubstitution([
         navigation_pkg,
         'maps',
-        'my_map.yaml'
+        'my_map2.yaml'
     ])
 
     use_sim_time_arg = DeclareLaunchArgument(
